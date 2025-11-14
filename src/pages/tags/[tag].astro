@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogPost from "../../components/BlogPost.astro";
+import MemoirPost from "../../components/MemoirPost.astro";
 
 export async function getStaticPaths() {
-	const allPosts = await getCollection("blog");
+	const allPosts = await getCollection("memoirs");
 	const uniqueTags = [
 		...new Set(allPosts.map((post) => post.data.tags).flat()),
 	];
@@ -29,7 +29,10 @@ const { posts } = Astro.props;
 	<ul>
 		{
 			posts.map((post) => (
-				<BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
+				<MemoirPost
+					url={`/posts/${post.id}/`}
+					title={post.data.title}
+				/>
 			))
 		}
 	</ul>
