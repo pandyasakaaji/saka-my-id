@@ -1,1 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Stack+Sans+Notch:wght@200..700&display=swap');
+
 @import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-stack: "Stack Sans Notch", sans-serif;
+}
