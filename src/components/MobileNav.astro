@@ -1,0 +1,73 @@
+---
+import HomeIcon from "../assets/HomeIcon.svg";
+import AuthorIcon from "../assets/AuthorIcon.svg";
+import MemoirsIcon from "../assets/MemoirsIcon.svg";
+
+// base styles
+const item =
+	"flex flex-col items-center py-3 px-6 bg-gray-50 border-2 border-gray-800 text-gray-700 hover:text-blue-600 rounded-lg ms-2";
+---
+
+<style>
+	.nav-enter {
+		transform: translateX(-120%);
+		opacity: 0;
+	}
+	.nav-enter-active {
+		transition: all 0.25s ease;
+		transform: translateX(0);
+		opacity: 1;
+	}
+	.nav-exit {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	.nav-exit-active {
+		transition: all 0.25s ease;
+		transform: translateX(-120%);
+		opacity: 0;
+	}
+</style>
+
+<!-- Toggle Button -->
+<button
+	id="toggleBtn"
+	class="fixed bottom-20 ml-2 left-0 z-[60] p-4 px-5 bg-gray-900 text-white rounded-4xl md:hidden"
+>
+	☰
+</button>
+
+<!-- Sidebar Nav -->
+<nav
+	id="mobileNav"
+	class="fixed bottom-40 left-0 max-w-[14vw] md:hidden z-50 space-y-3 nav-enter"
+>
+	<a href="/" class={item}>
+		<HomeIcon />
+	</a>
+	<a href="/author" class={item}>
+		<AuthorIcon />
+	</a>
+
+	<a href="/memoirs" class={item}>
+		<MemoirsIcon />
+	</a>
+</nav>
+
+<script>
+	const btn = document.getElementById("toggleBtn");
+	const nav = document.getElementById("mobileNav");
+	let open = false;
+
+	btn.addEventListener("click", () => {
+		open = !open;
+
+		if (open) {
+			nav.classList.remove("nav-exit", "nav-exit-active");
+			nav.classList.add("nav-enter-active");
+		} else {
+			nav.classList.remove("nav-enter", "nav-enter-active");
+			nav.classList.add("nav-exit-active");
+		}
+	});
+</script>
