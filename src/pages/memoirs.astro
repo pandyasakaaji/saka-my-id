@@ -9,11 +9,11 @@ const allPosts = await getCollection("memoirs");
 
 <BaseLayout pageTitle={pageTitle}>
 	<div
-		class="container mx-auto md:grid md:grid-cols-2 md:gap-8 prose max-w-none p-12 items-center"
+		class="min-h-screen md:min-h-[92vh] mx-auto md:grid md:grid-cols-2 md:gap-8 prose max-w-none p-8 md:p-12 md:py-8"
 	>
 		<article aria-labelledby="memoir-title">
 			<header>
-				<h1 id="memoir-title"><b>Memoir</b></h1>
+				<h1 id="memoir-title" class="font-stack"><b>Memoir</b></h1>
 				<p class="pronunciation">
 					<em>/ˈmɛm.wɑːr/</em> (from French <em>mémoire</em> [me.mwaʁ],
 					from Latin <em>memoria</em> "memory, remembrance")
@@ -40,28 +40,30 @@ const allPosts = await getCollection("memoirs");
 			</p>
 
 			<p>
-				<b>TLDR</b>, this will be a memoir, meaning it will focus on my
-				personal events, periods, or career milestones. Everything
-				written is based on my memory and is understood to be factual,
-				and note that <b
-					>I will try my best to include valid references if it is
-					needed, instead of my own opinions.</b
-				>
+				<b>TL;DR</b>: This is gonna be a memoir, which basically means
+				I’m just dumping my personal moments, phases, and career stuff
+				here. Everything is from my own memory (so yeah, it’s “factual”
+				according to my brain). And just so you know: I’ll write
+				whatever pops into my head, literally anything.
 			</p>
 		</article>
 		<aside>
-			<p>Memoirs written:</p>
-			{
-				allPosts.map((post: any) => (
-					<MemoirPost
-						url={`/posts/${post.id}/`}
-						title={post.data.title}
-						description={post.data.description}
-						pubDate={post.data.pubDate.toLocaleDateString()}
-					/>
-				))
-			}
-			<!-- <p><a href="/tags/">More memoirs?</a></p> -->
+			<div>
+				<p>Memoirs written so far:</p>
+				<div class="pl-6">
+					{
+						allPosts.map((post: any) => (
+							<MemoirPost
+								url={`/posts/${post.id}/`}
+								title={post.data.title}
+								description={post.data.description}
+								pubDate={post.data.pubDate.toLocaleDateString()}
+								class="pl-8"
+							/>
+						))
+					}
+				</div>
+			</div>
 		</aside>
 	</div>
 </BaseLayout>
