@@ -1,11 +1,12 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import MobileNav from "../components/MobileNav.astro";
 import "../styles/global.css";
 const { pageTitle, active } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,8 +16,11 @@ const { pageTitle, active } = Astro.props;
 	</head>
 	<body class="bg-gray-50">
 		<Header active={active} />
+		<MobileNav />
 		<div class="container mx-auto">
-			<div class="min-h-[92vh] border-3 border-black">
+			<div
+				class="min-h-screen md:min-h-[92vh] lg:border-3 lg:border-black"
+			>
 				<slot />
 			</div>
 		</div>
