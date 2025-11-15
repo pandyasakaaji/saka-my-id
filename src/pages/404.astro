@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "404";
+const active = "author";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<article>
+		<div
+			class="h-screen md:min-h-[92vh] md:max-h-[92vh] flex justify-center items-center p-12"
+		>
+			<h1
+				class="text-3xl md:text-4xl lg:text-5xl
+          font-extrabold
+          mb-4 font-stack text-center"
+			>
+				Are you lost, buddy?
+			</h1>
+		</div>
+	</article>
+</BaseLayout>
